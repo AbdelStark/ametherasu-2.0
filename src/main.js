@@ -21,7 +21,7 @@ import router from "./router/index";
 import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
 import './registerServiceWorker'
-import ValidatorClient from "@/services/ValidatorClient";
+import BeaconClient from "@/services/BeaconClient";
 
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
@@ -51,14 +51,14 @@ router.push({path: '/'});
 
 function buildSettings() {
   return {
-    validator: {
-      endpoint: 'http://127.0.0.1',
+    beacon: {
+      endpoint: 'http://127.0.0.1:5051',
     }
   };
 }
 
 function buildServices(settings) {
   return {
-    ethereumClient: new ValidatorClient(settings),
+    ethereumClient: new BeaconClient(settings),
   };
 }

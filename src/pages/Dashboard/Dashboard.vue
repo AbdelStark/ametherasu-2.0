@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       polling: null,
-      numPeers: 0,
-      chainHead: null,
+      identity: null,
+      healthy: false,
     }
   },
   computed: {
@@ -34,7 +34,7 @@ export default {
   },
   async created() {
     await this.refreshData();
-    this.pollData();
+    //this.pollData();
   },
   methods: {
     pollData() {
@@ -45,7 +45,8 @@ export default {
     },
     async refreshData() {
       try {
-
+        this.identity = await this.services.ethereumClient.nodeAPI.identity();
+        this.healthy =  await this.services.ethereumClient.nodeAPI.isHealthy();
       } catch (e) {
         this.$notifyMessage('danger', e);
       }
