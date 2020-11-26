@@ -1,7 +1,10 @@
 {
   "dashboard": {
     "peerId": "Peer ID",
-    "enr": "ENR"
+    "enr": "ENR",
+    "headSlot": "Head Slot",
+    "syncDistance": "Sync Distance",
+    "version": "Version"
   },
   "sidebar": {
     "title": "Ametherasu",

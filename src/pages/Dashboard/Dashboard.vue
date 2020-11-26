@@ -6,6 +6,28 @@
         <card>
           <h5 slot="header" class="title">Dashboard</h5>
           <div class="row">
+            <div class="col-md-12 pr-md-1">
+              <h5 class="card-category">{{ $t('dashboard.version') }}</h5>
+              <h1 class="card-title text-success">
+                {{ version == null ? '' : version.data.version }}
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 pr-md-1">
+              <h5 class="card-category">{{ $t('dashboard.headSlot') }}</h5>
+              <h2 class="card-title">
+                {{ syncing == null ? '' : syncing.data.head_slot }}
+              </h2>
+            </div>
+            <div class="col-md-2 pr-md-1">
+              <h5 class="card-category">{{ $t('dashboard.syncDistance') }}</h5>
+              <h2 class="card-title">
+                {{ syncing == null ? '' : syncing.data.sync_distance }}
+              </h2>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-6 pr-md-1">
               <h5 class="card-category">{{ $t('dashboard.peerId') }}</h5>
               <h3 class="card-title">
@@ -64,6 +86,8 @@ export default {
       polling: null,
       identity: null,
       healthy: false,
+      syncing: null,
+      version: null,
     }
   },
   computed: {
@@ -110,6 +134,8 @@ export default {
       try {
         this.identity = await this.services.ethereumClient.nodeAPI.identity();
         this.healthy = await this.services.ethereumClient.nodeAPI.isHealthy();
+        this.syncing = await this.services.ethereumClient.nodeAPI.syncing();
+        this.version = await this.services.ethereumClient.nodeAPI.version();
       } catch (e) {
         this.$notifyMessage('danger', e);
       }

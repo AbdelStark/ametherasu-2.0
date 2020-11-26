@@ -16,8 +16,19 @@ export default class BeaconNodeAPI {
 
   async identity() {
     this.refreshConfig();
-    console.log(this.endpointIdentity);
     const response = await axios.get(this.endpointIdentity);
+    return response.data;
+  }
+
+  async syncing() {
+    this.refreshConfig();
+    const response = await axios.get(this.endpointSyncing);
+    return response.data;
+  }
+
+  async version() {
+    this.refreshConfig();
+    const response = await axios.get(this.endpointVersion);
     return response.data;
   }
 
@@ -25,5 +36,7 @@ export default class BeaconNodeAPI {
     this.endpointRoot = this.settings.beacon.endpoint;
     this.endpointHealth = `${this.endpointRoot}/eth/v1/node/health`;
     this.endpointIdentity = `${this.endpointRoot}/eth/v1/node/identity`;
+    this.endpointSyncing = `${this.endpointRoot}/eth/v1/node/syncing`;
+    this.endpointVersion = `${this.endpointRoot}/eth/v1/node/version`;
   }
 }
