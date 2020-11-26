@@ -1,5 +1,7 @@
 {
   "dashboard": {
+    "peerId": "Peer ID",
+    "enr": "ENR"
   },
   "sidebar": {
     "title": "Ametherasu",
