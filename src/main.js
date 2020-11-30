@@ -12,6 +12,7 @@
 
  */
 import Vue from "vue";
+import './plugins/bootstrap-vue'
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import RouterPrefetch from 'vue-router-prefetch'
