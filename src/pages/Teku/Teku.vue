@@ -26,6 +26,31 @@
               </div>
             </div>
           </card>
+          <card>
+            <h5 slot="header" class="title">SSZ state</h5>
+            <h6>Download the state SSZ object for given state / block identifier.</h6>
+            <div class="row">
+              <div class="col-md-2 mt-2 form-inline">
+                <label class="mr-2">Identifier</label>
+                <b-form-select v-model="sszStateRequest.identifier"
+                               :options="sszStateRequest.options"></b-form-select>
+
+              </div>
+              <div class="col-md-2" v-if="sszStateRequest.identifier === 'custom'">
+                <base-input v-model="sszStateRequest.identifier" class="mt-2"
+                ></base-input>
+              </div>
+              <div class="col-md-2">
+                <base-button type="primary" @click="downloadByStateId">Download by state id</base-button>
+              </div>
+              <div class="col-md-2">
+                <base-button type="primary" @click="downloadByBlockId">Download by block id</base-button>
+              </div>
+              <!--div class="col-md-2" v-if="sszStateRequest.downloadLink != null">
+                File is ready: <b-link :href="sszStateRequest.downloadLink">SSZ file</b-link>
+              </div-->
+            </div>
+          </card>
         </card>
       </div>
       <router-view></router-view>
@@ -55,7 +80,18 @@ export default {
           {value: 'TRACE', text: 'TRACE'},
           {value: 'ALL', text: 'ALL'},
         ]
-      }
+      },
+      sszStateRequest: {
+        downloadLink: null,
+        identifier: 'head',
+        options: [
+          {value: 'head', text: 'head'},
+          {value: 'genesis', text: 'genesis'},
+          {value: 'finalized', text: 'finalized'},
+          {value: 'justified', text: 'justified'},
+          {value: 'custom', text: 'custom'},
+        ]
+      },
     }
   },
   computed: {
@@ -81,6 +117,34 @@ export default {
         this.$notifyMessage('danger', e);
       }
     },
+    async downloadByStateId() {
+      try {
+        const response = await this.services.ethereumClient.tekuAPI.downloadByStateId(
+          this.sszStateRequest.identifier,
+        );
+        this.downloadFile(response.data, 'state.ssz');
+      } catch (e) {
+        this.$notifyMessage('danger', e);
+      }
+    },
+    async downloadByBlockId() {
+      try {
+        const response = await this.services.ethereumClient.tekuAPI.downloadByBlockId(
+          this.sszStateRequest.identifier,
+        );
+        this.downloadFile(response.data, 'state.ssz');
+      } catch (e) {
+        this.$notifyMessage('danger', e);
+      }
+    },
+    downloadFile(data, name) {
+      const blob = new Blob([data]);
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = name;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
   },
 };
 </script>
