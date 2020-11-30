@@ -32,11 +32,18 @@ export default class BeaconNodeAPI {
     return response.data;
   }
 
+  async peers() {
+    this.refreshConfig();
+    const response = await axios.get(this.endpointPeers);
+    return response.data.data;
+  }
+
   refreshConfig() {
     this.endpointRoot = this.settings.beacon.endpoint;
     this.endpointHealth = `${this.endpointRoot}/eth/v1/node/health`;
     this.endpointIdentity = `${this.endpointRoot}/eth/v1/node/identity`;
     this.endpointSyncing = `${this.endpointRoot}/eth/v1/node/syncing`;
     this.endpointVersion = `${this.endpointRoot}/eth/v1/node/version`;
+    this.endpointPeers = `${this.endpointRoot}/eth/v1/node/peers`;
   }
 }

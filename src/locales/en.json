@@ -8,6 +8,9 @@
   },
   "sidebar": {
     "title": "Ametherasu",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "peers": "Peers",
+    "configuration": "Configuration",
+    "teku": "Teku"
   }
 }

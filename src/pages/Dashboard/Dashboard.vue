@@ -121,7 +121,7 @@ export default {
   },
   async created() {
     await this.refreshData();
-    //this.pollData();
+    this.pollData();
   },
   methods: {
     pollData() {

@@ -52,7 +52,7 @@ router.push({path: '/'});
 function buildSettings() {
   return {
     beacon: {
-      endpoint: 'http://127.0.0.1:5051',
+      endpoint: 'http://18.191.74.31:5051',
     }
   };
 }
