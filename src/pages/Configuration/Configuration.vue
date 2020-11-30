@@ -41,7 +41,7 @@ export default {
   async mounted() {
     try {
       const specResponse = await this.services.ethereumClient.configAPI.spec();
-      const data  = specResponse.data;
+      const data = specResponse.data;
       Object.keys(data).forEach(key => {
         this.data.push({
           key: key,

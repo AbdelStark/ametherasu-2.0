@@ -47,7 +47,7 @@
           </div>
           <div v-if="showP2PAddresses">
             <h4 class="title">P2P addresses</h4>
-            <div class="row" v-for="p2pAddress in p2pAddresses" :key="p2pAddress">
+            <div v-for="p2pAddress in p2pAddresses" :key="p2pAddress" class="row">
               <div class="col-md-12 pr-md-1">
                 <h4 class="card-title">
                   <i class="tim-icons icon-planet text-success"></i>
@@ -58,7 +58,7 @@
           </div>
           <div v-if="showDiscoveryAddresses">
             <h4 class="title">Discovery addresses</h4>
-            <div class="row" v-for="address in discoveryAddresses" :key="address">
+            <div v-for="address in discoveryAddresses" :key="address" class="row">
               <div class="col-md-12 pr-md-1">
                 <h4 class="card-title">
                   <i class="tim-icons icon-planet text-success"></i>

@@ -5,23 +5,24 @@
       <div>
         <card>
           <h5 slot="header" class="title">Teku</h5>
-          <div class="row">
-            <div class="col-md-3">
-              <base-input label="Log level"
-                          v-model="changeLogLevelRequest.level">
-              </base-input>
+          <card>
+            <h5 slot="header" class="title">Logging</h5>
+            <div class="row">
+              <div class="col-md-2 mt-2 form-inline">
+                <label class="mr-2">Log level</label>
+                <base-input v-model="changeLogLevelRequest.level">
+                </base-input>
+              </div>
+              <div class="col-md-2  mt-2 form-inline">
+                <label class="mr-2">Log filter</label>
+                <base-input v-model="changeLogLevelRequest.logFilter">
+                </base-input>
+              </div>
+              <div class="col-md-2">
+                <base-button type="primary" @click="changeLogLevel">Apply</base-button>
+              </div>
             </div>
-            <div class="col-md-3">
-              <base-input label="Filter"
-                          v-model="changeLogLevelRequest.logFilter">
-              </base-input>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <base-button type="primary" @click="changeLogLevel">Apply</base-button>
-            </div>
-          </div>
+          </card>
         </card>
       </div>
       <router-view></router-view>
@@ -52,9 +53,10 @@ export default {
   async created() {
   },
   methods: {
-      changeLogLevel(){
-        //this.services.ethereumClient.tekuAPI.logLevel()
-      },
+    changeLogLevel() {
+      //this.services.ethereumClient.tekuAPI.logLevel()
+      console.log(this.changeLogLevelRequest);
+    },
   },
 };
 </script>
