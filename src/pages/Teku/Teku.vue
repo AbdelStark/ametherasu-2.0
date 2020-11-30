@@ -30,14 +30,21 @@
             <h5 slot="header" class="title">SSZ state</h5>
             <h6>Download the state SSZ object for given state / block identifier.</h6>
             <div class="row">
+              <div class="col-md-1 mt-2">
+                <b-form-checkbox class="mt-2"
+                  v-model="sszStateRequest.customIdentifier" switch>
+                  custom
+                </b-form-checkbox>
+              </div>
               <div class="col-md-2 mt-2 form-inline">
                 <label class="mr-2">Identifier</label>
-                <b-form-select v-model="sszStateRequest.identifier"
-                               :options="sszStateRequest.options"></b-form-select>
-
-              </div>
-              <div class="col-md-2" v-if="sszStateRequest.identifier === 'custom'">
-                <base-input v-model="sszStateRequest.identifier" class="mt-2"
+                <b-form-select
+                  v-if="!sszStateRequest.customIdentifier"
+                  v-model="sszStateRequest.identifier"
+                  :options="sszStateRequest.options"></b-form-select>
+                <base-input
+                  v-if="sszStateRequest.customIdentifier"
+                  v-model="sszStateRequest.identifier"
                 ></base-input>
               </div>
               <div class="col-md-2">
@@ -46,9 +53,6 @@
               <div class="col-md-2">
                 <base-button type="primary" @click="downloadByBlockId">Download by block id</base-button>
               </div>
-              <!--div class="col-md-2" v-if="sszStateRequest.downloadLink != null">
-                File is ready: <b-link :href="sszStateRequest.downloadLink">SSZ file</b-link>
-              </div-->
             </div>
           </card>
         </card>
@@ -84,12 +88,12 @@ export default {
       sszStateRequest: {
         downloadLink: null,
         identifier: 'head',
+        customIdentifier: false,
         options: [
           {value: 'head', text: 'head'},
           {value: 'genesis', text: 'genesis'},
           {value: 'finalized', text: 'finalized'},
           {value: 'justified', text: 'justified'},
-          {value: 'custom', text: 'custom'},
         ]
       },
     }
