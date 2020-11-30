@@ -9,6 +9,7 @@
   "sidebar": {
     "title": "Ametherasu",
     "dashboard": "Dashboard",
+    "information": "Node Information",
     "peers": "Peers",
     "configuration": "Configuration",
     "teku": "Teku"

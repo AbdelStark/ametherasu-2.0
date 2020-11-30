@@ -5,6 +5,7 @@ import DashboardLayout from "@/layout/dashboard/DashboardLayout";
 import Peers from "@/pages/Peers/Peers";
 import Configuration from "@/pages/Configuration/Configuration";
 import Teku from "@/pages/Teku/Teku";
+import Information from "@/pages/Information/Information";
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
         path: 'dashboard',
         name: 'dashboard',
         components: {default: Dashboard}
+      },
+      {
+        path: 'information',
+        name: 'information',
+        components: {default: Information}
       },
       {
         path: 'peers',
