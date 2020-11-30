@@ -31,8 +31,8 @@
             <h6>Download the state SSZ object for given state / block identifier.</h6>
             <div class="row">
               <div class="col-md-1 mt-2">
-                <b-form-checkbox class="mt-2"
-                  v-model="sszStateRequest.customIdentifier" switch>
+                <b-form-checkbox v-model="sszStateRequest.customIdentifier"
+                                 class="mt-2" switch>
                   custom
                 </b-form-checkbox>
               </div>

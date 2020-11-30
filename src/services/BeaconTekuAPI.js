@@ -31,7 +31,7 @@ export default class BeaconConfigAPI {
   async downloadByBlockId(id) {
     this.refreshConfig();
     return await axios.get(
-      `${this.endpointRoot}/teku/v1/beacon/blocks/${id}/state` , {
+      `${this.endpointRoot}/teku/v1/beacon/blocks/${id}/state`, {
         responseType: 'blob',
       }
     );
