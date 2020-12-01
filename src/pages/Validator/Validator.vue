@@ -21,10 +21,10 @@
               </div>
               <div class="col-md-2 ml-4">
                 <base-button
-                  icon
                   v-clipboard:copy="result.attestationDataJson"
-                  v-clipboard:success="onCopy"
                   v-clipboard:error="onError"
+                  v-clipboard:success="onCopy"
+                  icon
                 >
                   <font-awesome-icon icon="copy"/>
                 </base-button>

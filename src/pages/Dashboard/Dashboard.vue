@@ -9,7 +9,13 @@
             <div class="col-md-2 pr-md-1">
               <h5 class="card-category">{{ $t('dashboard.headSlot') }}</h5>
               <h2 class="card-title">
-                {{ syncing == null ? '' : syncing.data.head_slot }}
+                <base-button
+                  v-clipboard:copy="syncing.data.head_slot"
+                  icon
+                >
+                  <font-awesome-icon icon="copy"/>
+                </base-button>
+               {{ syncing == null ? '' : syncing.data.head_slot }}
               </h2>
             </div>
             <div class="col-md-2 pr-md-1">
