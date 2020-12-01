@@ -7,7 +7,6 @@
         <sidebar-link :name="$t('sidebar.peers')" icon="tim-icons icon-atom" to="/peers"/>
         <sidebar-link :name="$t('sidebar.configuration')" icon="tim-icons icon-paper" to="/configuration"/>
         <sidebar-link :name="$t('sidebar.teku')" icon="tim-icons icon-spaceship" to="/teku"/>
-        <sidebar-link :name="$t('sidebar.metrics')" icon="tim-icons icon-chart-bar-32" to="/metrics"/>
       </template>
     </side-bar>
     <div class="main-panel">

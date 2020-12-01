@@ -13,8 +13,7 @@
     "information": "Node Information",
     "peers": "Peers",
     "configuration": "Configuration",
-    "teku": "Teku",
-    "metrics": "Metrics"
+    "teku": "Teku"
   },
   "teku": {
     "changeLogLevelPanel": {
