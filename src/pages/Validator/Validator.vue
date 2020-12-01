@@ -15,8 +15,8 @@
           <template #modal-footer>
             <div class="row">
               <div class="col-md-2">
-                <base-button icon @click="">
-                  <i class="tim-icons icon-cloud-download-93"></i>
+                <base-button icon @click="downloadAttestationData">
+                  <font-awesome-icon icon="download"/>
                 </base-button>
               </div>
             </div>
@@ -39,9 +39,7 @@
               </div>
               <div class="col-md-3 mt-2 form-inline">
                 <label class="mr-2">{{ $t('validator.produceAttestation.labels.committeeIndex') }}</label>
-                <base-input
-                  v-model="produceAttestationDataRequest.committeeIndex"
-                ></base-input>
+                <b-form-input   v-model="produceAttestationDataRequest.committeeIndex" type="number"></b-form-input>
               </div>
               <div class="col-md-2 mt-2">
                 <base-button type="primary" @click="produceAttestationData">
@@ -77,6 +75,10 @@ export default {
       produceAttestationDataRequest: {
         slot: 0,
         committeeIndex: 0,
+        committeeIndexOptions: [],
+      },
+      result: {
+        attestationData: null,
       }
     }
   },
@@ -85,6 +87,14 @@ export default {
       'services',
     ])
   },
+  mounted() {
+    for (let i = 0; i < 32; i++) {
+      this.produceAttestationDataRequest.committeeIndexOptions.push({
+        value: i,
+        text: i,
+      });
+    }
+  },
   methods: {
     async produceAttestationData() {
       try {
@@ -92,21 +102,33 @@ export default {
           this.produceAttestationDataRequest.slot,
           this.produceAttestationDataRequest.committeeIndex,
         );
-        console.log(attestationDataResponse.data);
+        this.result.attestationData = attestationDataResponse.data;
         this.showModal(
           'Attestation Data',
-          attestationDataResponse.data,
+          this.result.attestationData,
         );
       } catch (e) {
         this.$notifyMessage('danger', e);
       }
     },
+    async downloadAttestationData() {
+      this.downloadFile(this.result.attestationData, 'attestation-data.json');
+    },
     showModal(title, body) {
       this.modal.title = title;
       this.modal.body = body;
-      this.modal.show = true;
       this.$bvModal.show(this.modal.id);
     },
+    downloadFile(data, name) {
+      const contentType = 'application/json';
+      const dData = JSON.stringify(data, null, 2);
+      const blob = new Blob([dData], { type: contentType });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = name;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
   },
 };
 </script>

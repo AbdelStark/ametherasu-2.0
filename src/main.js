@@ -12,16 +12,17 @@
 
  */
 import Vue from "vue";
-import './plugins/bootstrap-vue'
+import './plugins/bootstrap-vue';
+import './plugins/font-awesome';
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import RouterPrefetch from 'vue-router-prefetch'
+import RouterPrefetch from 'vue-router-prefetch';
 import App from "./App";
 import router from "./router/index";
 
 import BlackDashboard from "./plugins/blackDashboard";
-import i18n from "./i18n"
-import './registerServiceWorker'
+import i18n from "./i18n";
+import './registerServiceWorker';
 import BeaconClient from "@/services/BeaconClient";
 
 Vue.use(BlackDashboard);
