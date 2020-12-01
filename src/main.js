@@ -59,7 +59,6 @@ function buildSettings() {
   return {
     beacon: {
       endpoint: 'http://18.191.74.31:5051',
-      metrics: 'http://18.191.74.31:8008/metrics',
     }
   };
 }
