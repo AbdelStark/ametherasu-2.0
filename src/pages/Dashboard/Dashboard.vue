@@ -18,6 +18,12 @@
                 {{ syncing == null ? '' : syncing.data.sync_distance }}
               </h2>
             </div>
+            <div class="col-md-2 pr-md-1">
+              <h5 class="card-category">{{ $t('dashboard.peerCount') }}</h5>
+              <h2 class="card-title">
+                {{ peerCount }}
+              </h2>
+            </div>
           </div>
         </card>
       </div>
@@ -38,11 +44,13 @@ export default {
       polling: null,
       healthy: false,
       syncing: null,
+      peerCount: 0,
     }
   },
   computed: {
     ...mapState([
       'services',
+      'cache',
     ])
   },
   async created() {
@@ -51,7 +59,7 @@ export default {
   },
   methods: {
     pollData() {
-      this.polling = setInterval(this.refreshData, 1000)
+      this.polling = setInterval(this.refreshData, 2000)
     },
     beforeDestroy() {
       clearInterval(this.polling)
@@ -61,6 +69,10 @@ export default {
         this.identity = await this.services.ethereumClient.nodeAPI.identity();
         this.syncing = await this.services.ethereumClient.nodeAPI.syncing();
         this.version = await this.services.ethereumClient.nodeAPI.version();
+        const peers = await this.services.ethereumClient.nodeAPI.peers();
+        if(peers != null){
+          this.peerCount = peers.length;
+        }
       } catch (e) {
         this.$notifyMessage('danger', e);
       }

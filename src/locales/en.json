@@ -4,7 +4,8 @@
     "enr": "ENR",
     "headSlot": "Head Slot",
     "syncDistance": "Sync Distance",
-    "version": "Version"
+    "version": "Version",
+    "peerCount": "Peer Count"
   },
   "sidebar": {
     "title": "Ametherasu",
@@ -12,7 +13,8 @@
     "information": "Node Information",
     "peers": "Peers",
     "configuration": "Configuration",
-    "teku": "Teku"
+    "teku": "Teku",
+    "metrics": "Metrics"
   },
   "teku": {
     "changeLogLevelPanel": {
