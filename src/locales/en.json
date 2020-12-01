@@ -13,7 +13,8 @@
     "information": "Node Information",
     "peers": "Peers",
     "configuration": "Configuration",
-    "teku": "Teku"
+    "teku": "Teku",
+    "validator": "Validator"
   },
   "teku": {
     "changeLogLevelPanel": {
@@ -37,6 +38,19 @@
       "buttons": {
         "downloadByStateId": "Download by state",
         "downloadByBlockId": "Download by block"
+      }
+    }
+  },
+  "validator": {
+    "produceAttestation": {
+      "header": "Produce an Attestation",
+      "title": "Generate attestation data for the block at the specified non-finalized slot.",
+      "labels": {
+        "slot": "Slot",
+        "committeeIndex": "Committee Index"
+      },
+      "buttons": {
+        "generate": "Generate"
       }
     }
   }

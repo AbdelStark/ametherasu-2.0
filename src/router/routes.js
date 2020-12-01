@@ -6,6 +6,7 @@ import Peers from "@/pages/Peers/Peers";
 import Configuration from "@/pages/Configuration/Configuration";
 import Teku from "@/pages/Teku/Teku";
 import Information from "@/pages/Information/Information";
+import Validator from "@/pages/Validator/Validator";
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
         path: 'teku',
         name: 'teku',
         components: {default: Teku}
+      },
+      {
+        path: 'validator',
+        name: 'validator',
+        components: {default: Validator}
       }
     ]
   },
