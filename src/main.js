@@ -14,6 +14,7 @@
 import Vue from "vue";
 import './plugins/bootstrap-vue';
 import './plugins/font-awesome';
+import './plugins/clipboard';
 import Vuex from "vuex";
 import VueRouter from "vue-router";
 import RouterPrefetch from 'vue-router-prefetch';

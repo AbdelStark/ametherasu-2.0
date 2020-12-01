@@ -14,9 +14,19 @@
           </div>
           <template #modal-footer>
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-2 mr-2">
                 <base-button icon @click="downloadAttestationData">
                   <font-awesome-icon icon="download"/>
+                </base-button>
+              </div>
+              <div class="col-md-2 ml-4">
+                <base-button
+                  icon
+                  v-clipboard:copy="result.attestationDataJson"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError"
+                >
+                  <font-awesome-icon icon="copy"/>
                 </base-button>
               </div>
             </div>
@@ -39,10 +49,13 @@
               </div>
               <div class="col-md-3 mt-2 form-inline">
                 <label class="mr-2">{{ $t('validator.produceAttestation.labels.committeeIndex') }}</label>
-                <b-form-input   v-model="produceAttestationDataRequest.committeeIndex" type="number"></b-form-input>
+                <b-form-input v-model="produceAttestationDataRequest.committeeIndex" type="number"></b-form-input>
               </div>
               <div class="col-md-2 mt-2">
-                <base-button type="primary" @click="produceAttestationData">
+                <base-button
+                  type="primary"
+                  @click="produceAttestationData"
+                >
                   {{ $t('validator.produceAttestation.buttons.generate') }}
                 </base-button>
               </div>
@@ -79,6 +92,7 @@ export default {
       },
       result: {
         attestationData: null,
+        attestationDataJson: '',
       }
     }
   },
@@ -103,6 +117,7 @@ export default {
           this.produceAttestationDataRequest.committeeIndex,
         );
         this.result.attestationData = attestationDataResponse.data;
+        this.result.attestationDataJson = JSON.stringify(this.result.attestationData, null, 2);
         this.showModal(
           'Attestation Data',
           this.result.attestationData,
@@ -122,12 +137,18 @@ export default {
     downloadFile(data, name) {
       const contentType = 'application/json';
       const dData = JSON.stringify(data, null, 2);
-      const blob = new Blob([dData], { type: contentType });
+      const blob = new Blob([dData], {type: contentType});
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = name;
       link.click();
       URL.revokeObjectURL(link.href);
+    },
+    onCopy() {
+      this.$notifyMessage('success', 'Data copied to clipboard.');
+    },
+    onError() {
+      this.$notifyMessage('danger', 'Data cannot be copied to clipboard.');
     }
   },
 };
