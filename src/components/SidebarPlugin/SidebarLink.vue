@@ -7,6 +7,7 @@
     <a class="nav-link">
       <slot>
         <i v-if="icon" :class="icon"></i>
+        <font-awesome-icon v-if="fontAwesome" :icon="icon"/>
         <p>{{ name }}</p>
       </slot>
     </a>
@@ -32,6 +33,7 @@ export default {
   props: {
     name: String,
     icon: String,
+    fontAwesome: Boolean,
     tag: {
       type: String,
       default: "router-link"
