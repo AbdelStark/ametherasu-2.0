@@ -1,5 +1,5 @@
 {
-  "name": "vue-black-dashboard",
+  "name": "ametherasu-2.0",
   "version": "1.0.0",
   "private": true,
   "description": "Ethereum 2.0 dashboard",
@@ -13,6 +13,7 @@
     "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "ajv-errors": "^1.0.1",
     "axios": "^0.21.0",
     "big-integer": "^1.6.48",
     "bootstrap-vue": "^2.17.3",
@@ -22,6 +23,7 @@
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
     "vue-i18n": "^8.18.2",
+    "vue-json-pretty": "^1.7.1",
     "vue-router": "^3.3.4",
     "vue-router-prefetch": "^1.6.0",
     "vue2-transitions": "^0.3.0",
