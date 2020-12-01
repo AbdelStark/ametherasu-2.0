@@ -31,11 +31,11 @@
     "downloadStatePanel": {
       "header": "SSZ state",
       "title": "Download the state SSZ object for given state / block identifier.",
-      "labels" : {
-        "custom" : "Custom",
-        "identifier" : "Identifier"
+      "labels": {
+        "custom": "Custom",
+        "identifier": "Identifier"
       },
-      "buttons" : {
+      "buttons": {
         "downloadByStateId": "Download by state",
         "downloadByBlockId": "Download by block"
       }

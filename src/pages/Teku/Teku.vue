@@ -6,16 +6,16 @@
         <card>
           <h5 slot="header" class="title">Teku</h5>
           <card>
-            <h5 slot="header" class="title">{{$t('teku.changeLogLevelPanel.header')}}</h5>
-            <h6>{{$t('teku.changeLogLevelPanel.title')}}</h6>
+            <h5 slot="header" class="title">{{ $t('teku.changeLogLevelPanel.header') }}</h5>
+            <h6>{{ $t('teku.changeLogLevelPanel.title') }}</h6>
             <div class="row">
               <div class="col-md-2 mt-2 form-inline">
-                <label class="mr-2">{{$t('teku.changeLogLevelPanel.labels.logLevel')}}</label>
+                <label class="mr-2">{{ $t('teku.changeLogLevelPanel.labels.logLevel') }}</label>
                 <b-form-select v-model="changeLogLevelRequest.level"
                                :options="changeLogLevelRequest.options"></b-form-select>
               </div>
               <div class="col-md-4  mt-2 form-inline">
-                <label class="mr-2">{{$t('teku.changeLogLevelPanel.labels.logLevel')}}</label>
+                <label class="mr-2">{{ $t('teku.changeLogLevelPanel.labels.logLevel') }}</label>
                 <b-form-tags v-model="changeLogLevelRequest.logFilter"
                              no-add-on-enter
                              placeholder="filters"
@@ -23,22 +23,23 @@
                 ></b-form-tags>
               </div>
               <div class="col-md-2">
-                <base-button type="primary" @click="changeLogLevel">{{$t('teku.changeLogLevelPanel.buttons.apply')}}</base-button>
+                <base-button type="primary" @click="changeLogLevel">{{ $t('teku.changeLogLevelPanel.buttons.apply') }}
+                </base-button>
               </div>
             </div>
           </card>
           <card>
-            <h5 slot="header" class="title">{{$t('teku.downloadStatePanel.header')}}</h5>
-            <h6>{{$t('teku.downloadStatePanel.title')}}</h6>
+            <h5 slot="header" class="title">{{ $t('teku.downloadStatePanel.header') }}</h5>
+            <h6>{{ $t('teku.downloadStatePanel.title') }}</h6>
             <div class="row">
               <div class="col-md-1 mt-2">
                 <b-form-checkbox v-model="sszStateRequest.customIdentifier"
                                  class="mt-2" switch>
-                 {{$t('teku.downloadStatePanel.labels.custom')}}
+                  {{ $t('teku.downloadStatePanel.labels.custom') }}
                 </b-form-checkbox>
               </div>
               <div class="col-md-2 mt-2 form-inline">
-                <label class="mr-2">{{$t('teku.downloadStatePanel.labels.identifier')}}</label>
+                <label class="mr-2">{{ $t('teku.downloadStatePanel.labels.identifier') }}</label>
                 <b-form-select
                   v-if="!sszStateRequest.customIdentifier"
                   v-model="sszStateRequest.identifier"
@@ -49,10 +50,14 @@
                 ></base-input>
               </div>
               <div class="col-md-2">
-                <base-button :loading="sszStateRequest.isDownloadingByState" type="primary" @click="downloadByStateId">{{$t('teku.downloadStatePanel.buttons.downloadByStateId')}}</base-button>
+                <base-button :loading="sszStateRequest.isDownloadingByState" type="primary" @click="downloadByStateId">
+                  {{ $t('teku.downloadStatePanel.buttons.downloadByStateId') }}
+                </base-button>
               </div>
               <div class="col-md-2">
-                <base-button :loading="sszStateRequest.isDownloadingByBlock" type="warning" @click="downloadByBlockId">{{$t('teku.downloadStatePanel.buttons.downloadByBlockId')}}</base-button>
+                <base-button :loading="sszStateRequest.isDownloadingByBlock" type="warning" @click="downloadByBlockId">
+                  {{ $t('teku.downloadStatePanel.buttons.downloadByBlockId') }}
+                </base-button>
               </div>
             </div>
           </card>

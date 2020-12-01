@@ -70,7 +70,7 @@ export default {
         this.syncing = await this.services.ethereumClient.nodeAPI.syncing();
         this.version = await this.services.ethereumClient.nodeAPI.version();
         const peers = await this.services.ethereumClient.nodeAPI.peers();
-        if(peers != null){
+        if (peers != null) {
           this.peerCount = peers.length;
         }
       } catch (e) {
