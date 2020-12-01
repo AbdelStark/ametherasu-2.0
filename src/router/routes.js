@@ -6,7 +6,6 @@ import Peers from "@/pages/Peers/Peers";
 import Configuration from "@/pages/Configuration/Configuration";
 import Teku from "@/pages/Teku/Teku";
 import Information from "@/pages/Information/Information";
-import Metrics from "@/pages/Metrics/Metrics";
 
 const routes = [
   {
@@ -39,12 +38,7 @@ const routes = [
         path: 'teku',
         name: 'teku',
         components: {default: Teku}
-      },
-      {
-        path: 'metrics',
-        name: 'metrics',
-        components: {default: Metrics}
-      },
+      }
     ]
   },
   {path: "*", component: NotFound},
