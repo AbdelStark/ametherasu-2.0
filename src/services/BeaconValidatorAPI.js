@@ -1,5 +1,3 @@
-import {StatusCodes} from "http-status-codes";
-
 const axios = require('axios').default;
 
 export default class BeaconValidatorAPI {

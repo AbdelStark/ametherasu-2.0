@@ -4,12 +4,24 @@
       <div>
         <b-modal id="modal-validator" :title="modal.title">
           <div>
-            <vue-json-pretty
-              :data="modal.body"
-              highlightMouseoverNode
-            >
-            </vue-json-pretty>
+            <div class="row">
+              <vue-json-pretty
+                :data="modal.body"
+                highlightMouseoverNode
+              >
+              </vue-json-pretty>
+            </div>
           </div>
+          <template #modal-footer>
+            <div class="row">
+              <div class="col-md-2">
+                <base-button icon @click="">
+                  <i class="tim-icons icon-cloud-download-93"></i>
+                </base-button>
+              </div>
+            </div>
+
+          </template>
         </b-modal>
 
         <!-- your content here -->
