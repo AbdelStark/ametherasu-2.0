@@ -13,5 +13,30 @@
     "peers": "Peers",
     "configuration": "Configuration",
     "teku": "Teku"
+  },
+  "teku": {
+    "changeLogLevelPanel": {
+      "header": "Logging",
+      "title": "Change log level using filters.",
+      "labels": {
+        "logLevel": "Log level",
+        "filters": "Filters"
+      },
+      "buttons": {
+        "apply": "Apply"
+      }
+    },
+    "downloadStatePanel": {
+      "header": "SSZ state",
+      "title": "Download the state SSZ object for given state / block identifier.",
+      "labels" : {
+        "custom" : "Custom",
+        "identifier" : "Identifier"
+      },
+      "buttons" : {
+        "downloadByStateId": "Download by state",
+        "downloadByBlockId": "Download by block"
+      }
+    }
   }
 }

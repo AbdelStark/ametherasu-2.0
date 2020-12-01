@@ -6,15 +6,16 @@
         <card>
           <h5 slot="header" class="title">Teku</h5>
           <card>
-            <h5 slot="header" class="title">Logging</h5>
+            <h5 slot="header" class="title">{{$t('teku.changeLogLevelPanel.header')}}</h5>
+            <h6>{{$t('teku.changeLogLevelPanel.title')}}</h6>
             <div class="row">
               <div class="col-md-2 mt-2 form-inline">
-                <label class="mr-2">Log level</label>
+                <label class="mr-2">{{$t('teku.changeLogLevelPanel.labels.logLevel')}}</label>
                 <b-form-select v-model="changeLogLevelRequest.level"
                                :options="changeLogLevelRequest.options"></b-form-select>
               </div>
-              <div class="col-md-8  mt-2 form-inline">
-                <label class="mr-2">Filters</label>
+              <div class="col-md-4  mt-2 form-inline">
+                <label class="mr-2">{{$t('teku.changeLogLevelPanel.labels.logLevel')}}</label>
                 <b-form-tags v-model="changeLogLevelRequest.logFilter"
                              no-add-on-enter
                              placeholder="filters"
@@ -22,22 +23,22 @@
                 ></b-form-tags>
               </div>
               <div class="col-md-2">
-                <base-button type="primary" @click="changeLogLevel">Apply</base-button>
+                <base-button type="primary" @click="changeLogLevel">{{$t('teku.changeLogLevelPanel.buttons.apply')}}</base-button>
               </div>
             </div>
           </card>
           <card>
-            <h5 slot="header" class="title">SSZ state</h5>
-            <h6>Download the state SSZ object for given state / block identifier.</h6>
+            <h5 slot="header" class="title">{{$t('teku.downloadStatePanel.header')}}</h5>
+            <h6>{{$t('teku.downloadStatePanel.title')}}</h6>
             <div class="row">
               <div class="col-md-1 mt-2">
                 <b-form-checkbox v-model="sszStateRequest.customIdentifier"
                                  class="mt-2" switch>
-                  custom
+                 {{$t('teku.downloadStatePanel.labels.custom')}}
                 </b-form-checkbox>
               </div>
               <div class="col-md-2 mt-2 form-inline">
-                <label class="mr-2">Identifier</label>
+                <label class="mr-2">{{$t('teku.downloadStatePanel.labels.identifier')}}</label>
                 <b-form-select
                   v-if="!sszStateRequest.customIdentifier"
                   v-model="sszStateRequest.identifier"
@@ -48,10 +49,10 @@
                 ></base-input>
               </div>
               <div class="col-md-2">
-                <base-button type="primary" @click="downloadByStateId">Download by state id</base-button>
+                <base-button :loading="sszStateRequest.isDownloadingByState" type="primary" @click="downloadByStateId">{{$t('teku.downloadStatePanel.buttons.downloadByStateId')}}</base-button>
               </div>
               <div class="col-md-2">
-                <base-button type="primary" @click="downloadByBlockId">Download by block id</base-button>
+                <base-button :loading="sszStateRequest.isDownloadingByBlock" type="warning" @click="downloadByBlockId">{{$t('teku.downloadStatePanel.buttons.downloadByBlockId')}}</base-button>
               </div>
             </div>
           </card>
@@ -89,6 +90,8 @@ export default {
         downloadLink: null,
         identifier: 'head',
         customIdentifier: false,
+        isDownloadingByBlock: false,
+        isDownloadingByState: false,
         options: [
           {value: 'head', text: 'head'},
           {value: 'genesis', text: 'genesis'},
@@ -123,22 +126,28 @@ export default {
     },
     async downloadByStateId() {
       try {
+        this.sszStateRequest.isDownloadingByState = true;
         const response = await this.services.ethereumClient.tekuAPI.downloadByStateId(
           this.sszStateRequest.identifier,
         );
         this.downloadFile(response.data, 'state.ssz');
+        this.sszStateRequest.isDownloadingByState = false;
       } catch (e) {
         this.$notifyMessage('danger', e);
+        this.sszStateRequest.isDownloadingByState = false;
       }
     },
     async downloadByBlockId() {
       try {
+        this.sszStateRequest.isDownloadingByBlock = true;
         const response = await this.services.ethereumClient.tekuAPI.downloadByBlockId(
           this.sszStateRequest.identifier,
         );
         this.downloadFile(response.data, 'state.ssz');
+        this.sszStateRequest.isDownloadingByBlock = false;
       } catch (e) {
         this.$notifyMessage('danger', e);
+        this.sszStateRequest.isDownloadingByBlock = false;
       }
     },
     downloadFile(data, name) {
