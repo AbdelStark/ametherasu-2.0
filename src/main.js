@@ -25,7 +25,6 @@ import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n";
 import './registerServiceWorker';
 import BeaconClient from "@/services/BeaconClient";
-import TekuLauncher from "@/services/TekuLauncher";
 
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
@@ -67,6 +66,5 @@ function buildSettings() {
 function buildServices(settings) {
   return {
     ethereumClient: new BeaconClient(settings),
-    tekuLauncher: new TekuLauncher(),
   };
 }

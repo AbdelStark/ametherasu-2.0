@@ -5190,6 +5190,14 @@
   "resolved" "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz"
   "version" "5.0.1"
 
+"json-to-pretty-yaml@^1.2.2":
+  "integrity" "sha1-9M0L0KXo/h3yWq9boRiwmf2ZLVs="
+  "resolved" "https://registry.npmjs.org/json-to-pretty-yaml/-/json-to-pretty-yaml-1.2.2.tgz"
+  "version" "1.2.2"
+  dependencies:
+    "remedial" "^1.0.7"
+    "remove-trailing-spaces" "^1.0.6"
+
 "json3@^3.3.2":
   "resolved" "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz"
   "version" "3.3.2"
@@ -7594,9 +7602,19 @@
   "resolved" "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz"
   "version" "0.2.7"
 
+"remedial@^1.0.7":
+  "integrity" "sha512-/62tYiOe6DzS5BqVsNpH/nkGlX45C/Sp6V+NtiN6JQNS1Viay7cWkazmRkrQrdFj2eshDe96SIQNIoMxqhzBOg=="
+  "resolved" "https://registry.npmjs.org/remedial/-/remedial-1.0.8.tgz"
+  "version" "1.0.8"
+
 "remove-trailing-separator@^1.0.1":
   "resolved" "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz"
   "version" "1.1.0"
+
+"remove-trailing-spaces@^1.0.6":
+  "integrity" "sha512-O3vsMYfWighyFbTd8hk8VaSj9UAGENxAtX+//ugIst2RMk5e03h6RoIS+0ylsFxY1gvmPuAY/PO4It+gPEeySA=="
+  "resolved" "https://registry.npmjs.org/remove-trailing-spaces/-/remove-trailing-spaces-1.0.8.tgz"
+  "version" "1.0.8"
 
 "renderkid@^2.0.1":
   "resolved" "https://registry.yarnpkg.com/renderkid/-/renderkid-2.0.1.tgz"
