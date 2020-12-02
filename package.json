@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve --open",
-    "e2e": "node test/e2e/runner.js",
+    "test": "mocha --require esm --recursive",
     "lint-fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
@@ -39,6 +39,8 @@
     "@vue/cli-plugin-pwa": "^4.4.6",
     "@vue/cli-service": "^4.4.6",
     "bootstrap": "^4.5.2",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "portal-vue": "^2.1.7",

@@ -15,7 +15,7 @@
                 >
                   <font-awesome-icon icon="copy"/>
                 </base-button>
-               {{ syncing == null ? '' : syncing.data.head_slot }}
+                {{ syncing == null ? '' : syncing.data.head_slot }}
               </h2>
             </div>
             <div class="col-md-2 pr-md-1">

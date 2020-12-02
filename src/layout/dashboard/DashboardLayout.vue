@@ -7,8 +7,8 @@
         <sidebar-link :name="$t('sidebar.peers')" icon="tim-icons icon-atom" to="/peers"/>
         <sidebar-link :name="$t('sidebar.configuration')" icon="tim-icons icon-paper" to="/configuration"/>
         <sidebar-link :name="$t('sidebar.teku')" icon="tim-icons icon-spaceship" to="/teku"/>
-        <sidebar-link :name="$t('sidebar.validator')"  icon="tim-icons icon-key-25" to="/validator"/>
-        <sidebar-link :name="$t('sidebar.launcher')"  icon="tim-icons icon-components" to="/launcher"/>
+        <sidebar-link :name="$t('sidebar.validator')" icon="tim-icons icon-key-25" to="/validator"/>
+        <sidebar-link :name="$t('sidebar.launcher')" icon="tim-icons icon-components" to="/launcher"/>
       </template>
     </side-bar>
     <div class="main-panel">

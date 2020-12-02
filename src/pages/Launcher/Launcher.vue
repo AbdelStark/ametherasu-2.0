@@ -28,6 +28,8 @@ export default {
       'services',
     ])
   },
+  mounted() {
+  },
   methods: {},
 };
 </script>
