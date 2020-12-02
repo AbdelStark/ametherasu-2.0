@@ -7,6 +7,7 @@ import Configuration from "@/pages/Configuration/Configuration";
 import Teku from "@/pages/Teku/Teku";
 import Information from "@/pages/Information/Information";
 import Validator from "@/pages/Validator/Validator";
+import Launcher from "@/pages/Launcher/Launcher";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
         path: 'validator',
         name: 'validator',
         components: {default: Validator}
+      },
+      {
+        path: 'launcher',
+        name: 'launcher',
+        components: {default: Launcher}
       }
     ]
   },

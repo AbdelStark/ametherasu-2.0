@@ -14,7 +14,8 @@
     "peers": "Peers",
     "configuration": "Configuration",
     "teku": "Teku",
-    "validator": "Validator"
+    "validator": "Validator",
+    "launcher": "Launcher"
   },
   "teku": {
     "changeLogLevelPanel": {
