@@ -10,6 +10,14 @@ export default class TekuCommandLineOptions {
   }
 
   /**
+   * Add CLI options
+   * @param {TekuCommandLineOption} options
+   */
+  addOptions(...options) {
+   options.forEach(option => this.addOption(option));
+  }
+
+  /**
    * Add CLI option
    * @param {TekuCommandLineOption} option
    */

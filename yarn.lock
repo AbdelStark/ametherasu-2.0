@@ -7499,6 +7499,13 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"recursive-readdir@^2.2.2":
+  "integrity" "sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg=="
+  "resolved" "https://registry.npmjs.org/recursive-readdir/-/recursive-readdir-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "minimatch" "3.0.4"
+
 "redent@^1.0.0":
   "resolved" "https://registry.yarnpkg.com/redent/-/redent-1.0.0.tgz"
   "version" "1.0.0"
