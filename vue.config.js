@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
+  /*publicPath: process.env.NODE_ENV === 'production'
     ? '/ametherasu/'
-    : '/',
+    : '/',*/
   lintOnSave: false,
   configureWebpack: {
     // Set up all the aliases we use in our app.

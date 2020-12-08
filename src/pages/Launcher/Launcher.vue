@@ -5,7 +5,11 @@
       <div>
         <b-modal id="modal-launcher" :title="modal.title">
           <div>
-              {{ modal.body }}
+            <div v-for="option in escapedOptions" :key="option">
+              <div class="col-md-12 pr-md-1">
+                {{ option }}
+              </div>
+            </div>
           </div>
           <template #modal-footer>
             <div class="row">
@@ -159,6 +163,7 @@ export default {
         },
       },
       options: new TekuOptions(),
+      escapedOptions: [],
       launcher: new TekuLauncher(),
       configuration: '',
     }
@@ -189,7 +194,7 @@ export default {
       }
 
       this.configuration = this.launcher.buildConfiguration(this.options);
-      console.log(this.configuration);
+      this.escapedOptions = this.configuration.split("\n");
       this.showModal(
         'Configuration',
         this.configuration,
@@ -217,7 +222,7 @@ export default {
     },
     onError() {
       this.$notifyMessage('danger', 'Data cannot be copied to clipboard.');
-    }
+    },
   },
 };
 </script>

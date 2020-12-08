@@ -14,7 +14,7 @@
           <div class="photo">
             <img
               alt=""
-              src="img/ethereum-small.png">
+              src="img/icons/teku.png">
           </div>
         </a>
         <a class="simple-text logo-normal" href="#">

@@ -35,6 +35,7 @@
   border-radius: 5px;
 
   .sidebar-wrapper {
+    background: linear-gradient($facebook, $facebook-states);
     width: $full-width;
     min-height: 100%;
     max-height: calc(100vh - 705px);
