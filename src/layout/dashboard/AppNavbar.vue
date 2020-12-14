@@ -62,7 +62,7 @@
                 <a class="nav-item dropdown-item" href="#">Profile</a>
               </li>
               <li class="nav-link">
-                <a class="nav-item dropdown-item" href="#">Settings</a>
+                <a class="nav-item dropdown-item" href="#" @click="showSettings">Settings</a>
               </li>
               <div class="dropdown-divider"></div>
               <li class="nav-link">
@@ -70,6 +70,25 @@
               </li>
             </base-dropdown>
           </ul>
+          <b-modal id="modal-settings" hide-footer>
+            <div class="row">
+              <div class="col-md-12">
+                <label>
+                  Beacon Endpoint
+                  <input
+                    v-model="settings.beacon.endpoint"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <base-button @click="saveSettings">
+                  Save
+                </base-button>
+              </div>
+            </div>
+          </b-modal>
         </div>
       </collapse-transition>
     </div>
@@ -78,6 +97,7 @@
 <script>
 import {CollapseTransition} from 'vue2-transitions';
 import Modal from '@/components/Modal';
+import {mapState} from "vuex";
 
 export default {
   components: {
@@ -91,17 +111,27 @@ export default {
     },
     isRTL() {
       return this.$rtl.isRTL;
-    }
+    },
+    ...mapState([
+      'settings',
+    ])
   },
   data() {
     return {
       activeNotifications: false,
       showMenu: false,
       searchModalVisible: false,
-      searchQuery: ''
+      searchQuery: '',
     };
   },
   methods: {
+    showSettings(){
+      this.$bvModal.show('modal-settings');
+    },
+    saveSettings(){
+      this.$bvModal.hide('modal-settings');
+      localStorage.setItem('settings', JSON.stringify(this.settings));
+    },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },

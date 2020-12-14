@@ -56,9 +56,28 @@ new Vue({
 router.push({path: '/'});
 
 function buildSettings() {
+  if(localStorage.getItem('settings')){
+    return settingsFromLocalStorage();
+  }
+  return defaultSettings();
+}
+
+function settingsFromLocalStorage(){
+  console.log('retrieving settings from local storage');
+  try {
+    return  JSON.parse(localStorage.getItem('settings'));
+  } catch(e) {
+    console.error(e);
+    localStorage.removeItem('settings');
+    return defaultSettings();
+  }
+}
+
+function defaultSettings(){
+  console.log('loading default application settings');
   return {
     beacon: {
-      endpoint: 'http://18.191.74.31:5051',
+      endpoint: 'http://127.0.0.1:5051',
     }
   };
 }
