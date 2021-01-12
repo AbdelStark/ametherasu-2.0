@@ -73,6 +73,7 @@ export default {
       identity: null,
       healthy: false,
       version: null,
+      errorCount: 0,
     }
   },
   computed: {
@@ -106,21 +107,25 @@ export default {
   },
   async created() {
     await this.refreshData();
-    this.pollData();
+    //this.pollData();
   },
   methods: {
     pollData() {
-      this.polling = setInterval(this.refreshData, 1000)
+      this.polling = setInterval(this.refreshData, 5000)
     },
     beforeDestroy() {
       clearInterval(this.polling)
     },
     async refreshData() {
+      if(this.errorCount > 3){
+        clearInterval(this.polling);
+      }
       try {
         this.identity = await this.services.ethereumClient.nodeAPI.identity();
         this.healthy = await this.services.ethereumClient.nodeAPI.isHealthy();
         this.version = await this.services.ethereumClient.nodeAPI.version();
       } catch (e) {
+        this.errorCount++;
         this.$notifyMessage('danger', e);
       }
     },

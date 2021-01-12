@@ -76,7 +76,7 @@
                 <label>
                   Beacon Endpoint
                   <input
-                    v-model="settings.beacon.endpoint"
+                    v-model="tmpEndpoint"
                   />
                 </label>
               </div>
@@ -116,12 +116,16 @@ export default {
       'settings',
     ])
   },
+  mounted() {
+    this.tmpEndpoint = this.settings.beacon.endpoint;
+  },
   data() {
     return {
       activeNotifications: false,
       showMenu: false,
       searchModalVisible: false,
       searchQuery: '',
+      tmpEndpoint: '',
     };
   },
   methods: {
@@ -130,6 +134,7 @@ export default {
     },
     saveSettings(){
       this.$bvModal.hide('modal-settings');
+      this.settings.beacon.endpoint = this.tmpEndpoint;
       localStorage.setItem('settings', JSON.stringify(this.settings));
     },
     capitalizeFirstLetter(string) {

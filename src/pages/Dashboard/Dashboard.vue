@@ -51,6 +51,7 @@ export default {
       healthy: false,
       syncing: null,
       peerCount: 0,
+      errorCount: 0,
     }
   },
   computed: {
@@ -62,15 +63,19 @@ export default {
   async created() {
     await this.refreshData();
     this.pollData();
+
   },
   methods: {
     pollData() {
-      this.polling = setInterval(this.refreshData, 2000)
+      this.polling = setInterval(this.refreshData, 2000);
     },
     beforeDestroy() {
       clearInterval(this.polling)
     },
     async refreshData() {
+      if(this.errorCount > 3){
+        clearInterval(this.polling);
+      }
       try {
         this.identity = await this.services.ethereumClient.nodeAPI.identity();
         this.syncing = await this.services.ethereumClient.nodeAPI.syncing();
@@ -79,7 +84,9 @@ export default {
         if (peers != null) {
           this.peerCount = peers.length;
         }
+        this.errorCount = 0;
       } catch (e) {
+        this.errorCount++;
         this.$notifyMessage('danger', e);
       }
     },

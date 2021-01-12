@@ -53,7 +53,6 @@ new Vue({
   store,
 }).$mount("#app");
 
-router.push({path: '/'});
 
 function buildSettings() {
   if(localStorage.getItem('settings')){
@@ -77,7 +76,7 @@ function defaultSettings(){
   console.log('loading default application settings');
   return {
     beacon: {
-      endpoint: 'http://127.0.0.1:5051',
+      endpoint: 'http://18.191.74.31:5051',
     }
   };
 }
